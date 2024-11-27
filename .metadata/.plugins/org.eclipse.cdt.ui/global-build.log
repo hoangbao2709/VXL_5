@@ -1,26 +1,17 @@
-03:59:29 **** Incremental Build of configuration Debug for project VXL_5 ****
+04:02:01 **** Incremental Build of configuration Debug for project VXL_5 ****
 make -j20 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/command_parser_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/command_parser_fsm.d" -MT"Core/Src/command_parser_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/command_parser_fsm.o"
 arm-none-eabi-gcc "../Core/Src/uart_communiation_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart_communiation_fsm.d" -MT"Core/Src/uart_communiation_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/uart_communiation_fsm.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:117:3: warning: implicit declaration of function 'setTimer' [-Wimplicit-function-declaration]
-  117 |   setTimer(0, 30);
-      |   ^~~~~~~~
-In file included from ../Core/Inc/uart_communiation_fsm.h:12,
-                 from ../Core/Src/uart_communiation_fsm.c:8:
+In file included from ../Core/Inc/command_parser_fsm.h:12,
+                 from ../Core/Src/command_parser_fsm.c:1:
 ../Core/Inc/global.h:14:6: warning: array 'command_data' assumed to have one element
    14 | char command_data[];
       |      ^~~~~~~~~~~~
 ../Core/Inc/global.h:17:6: warning: array 'buffer' assumed to have one element
    17 | char buffer[];
       |      ^~~~~~
-../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
-../Core/Src/main.c:312:2: warning: implicit declaration of function 'timer_run' [-Wimplicit-function-declaration]
-  312 |  timer_run();
-      |  ^~~~~~~~~
-In file included from ../Core/Inc/command_parser_fsm.h:12,
-                 from ../Core/Src/main.c:25:
-../Core/Src/main.c: At top level:
+In file included from ../Core/Inc/uart_communiation_fsm.h:12,
+                 from ../Core/Src/uart_communiation_fsm.c:8:
 ../Core/Inc/global.h:14:6: warning: array 'command_data' assumed to have one element
    14 | char command_data[];
       |      ^~~~~~~~~~~~
@@ -34,13 +25,13 @@ Finished building target: VXL_5.elf
 arm-none-eabi-size   VXL_5.elf 
 arm-none-eabi-objdump -h -S  VXL_5.elf  > "VXL_5.list"
 arm-none-eabi-objcopy  -O ihex  VXL_5.elf  "VXL_5.hex"
-   text	   data	    bss	    dec	    hex	filename
-  16844	    120	   1912	  18876	   49bc	VXL_5.elf
 arm-none-eabi-objcopy  -O binary  VXL_5.elf  "VXL_5.bin"
+   text	   data	    bss	    dec	    hex	filename
+  16820	    120	   1912	  18852	   49a4	VXL_5.elf
 Finished building: default.size.stdout
  
-Finished building: VXL_5.hex
 Finished building: VXL_5.bin
+Finished building: VXL_5.hex
  
  
 Finished building: VXL_5.list

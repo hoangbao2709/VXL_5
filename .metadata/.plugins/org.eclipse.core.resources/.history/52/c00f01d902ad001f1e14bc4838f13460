@@ -7,9 +7,9 @@
 
 #include "uart_communiation_fsm.h"
 #include "software_timer.h"
-#include "main.h"
-#include <stdio.h>
-#include <string.h>
+#include "main.h" // Để truy cập vào hadc1 và huart2
+#include <stdio.h> // Để sử dụng sprintf
+#include <string.h> // Để sử dụng strlen
 
 #define INIT        0
 #define READ_ADC    1
