@@ -1,0 +1,27 @@
+#include "command_parser_fsm.h"
+#include <string.h> // Ensure this is included for strlen
+
+int test = 1;
+
+void command_parser_fsm() {
+    if (test == 1 && index_buffer != 0) {
+        int i = index_buffer - 1;
+        if (i >= 4 && buffer[i] == '#' &&
+            buffer[i - 1] == 'T' &&
+            buffer[i - 2] == 'S' &&
+            buffer[i - 3] == 'R' &&
+            buffer[i - 4] == '!') {
+            read_adc_flag = 1;
+            test = 0;
+        }
+    }else if (test == 1 && index_buffer != 0) {
+        int i = index_buffer - 1;
+        if (i >= 3 && buffer[i] == '#' &&
+            buffer[i - 1] == 'K' &&
+            buffer[i - 2] == 'O' &&
+            buffer[i - 3] == '!') {
+            read_adc_flag = 2;
+            test = 0;
+        }
+    }
+}

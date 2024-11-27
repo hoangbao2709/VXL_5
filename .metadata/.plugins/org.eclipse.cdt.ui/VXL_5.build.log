@@ -1,37 +1,41 @@
-23:06:57 **** Incremental Build of configuration Debug for project VXL_5 ****
+03:59:29 **** Incremental Build of configuration Debug for project VXL_5 ****
 make -j20 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/uart_communiation_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart_communiation_fsm.d" -MT"Core/Src/uart_communiation_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/uart_communiation_fsm.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:112:7: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  112 |       sprintf(str, "Von %d", ADC_value);
-      |       ^~~~~~~
-../Core/Src/main.c:112:7: warning: incompatible implicit declaration of built-in function 'sprintf'
-../Core/Src/main.c:22:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-   21 | #include "main.h"
-  +++ |+#include <stdio.h>
-   22 | 
-../Core/Src/main.c:112:26: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
-  112 |       sprintf(str, "Von %d", ADC_value);
-      |                         ~^   ~~~~~~~~~
-      |                          |   |
-      |                          int uint32_t {aka long unsigned int}
-      |                         %ld
-../Core/Src/main.c:113:49: warning: implicit declaration of function 'strlen' [-Wimplicit-function-declaration]
-  113 |       HAL_UART_Transmit(&huart2, (uint8_t*)str, strlen(str), 1000);
-      |                                                 ^~~~~~
-../Core/Src/main.c:113:49: warning: incompatible implicit declaration of built-in function 'strlen'
-../Core/Src/main.c:22:1: note: include '<string.h>' or provide a declaration of 'strlen'
-   21 | #include "main.h"
-  +++ |+#include <string.h>
-   22 | 
+../Core/Src/main.c:117:3: warning: implicit declaration of function 'setTimer' [-Wimplicit-function-declaration]
+  117 |   setTimer(0, 30);
+      |   ^~~~~~~~
+In file included from ../Core/Inc/uart_communiation_fsm.h:12,
+                 from ../Core/Src/uart_communiation_fsm.c:8:
+../Core/Inc/global.h:14:6: warning: array 'command_data' assumed to have one element
+   14 | char command_data[];
+      |      ^~~~~~~~~~~~
+../Core/Inc/global.h:17:6: warning: array 'buffer' assumed to have one element
+   17 | char buffer[];
+      |      ^~~~~~
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:312:2: warning: implicit declaration of function 'timer_run' [-Wimplicit-function-declaration]
+  312 |  timer_run();
+      |  ^~~~~~~~~
+In file included from ../Core/Inc/command_parser_fsm.h:12,
+                 from ../Core/Src/main.c:25:
+../Core/Src/main.c: At top level:
+../Core/Inc/global.h:14:6: warning: array 'command_data' assumed to have one element
+   14 | char command_data[];
+      |      ^~~~~~~~~~~~
+../Core/Inc/global.h:17:6: warning: array 'buffer' assumed to have one element
+   17 | char buffer[];
+      |      ^~~~~~
 arm-none-eabi-gcc -o "VXL_5.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\VXL_5\VXL_5\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VXL_5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+c:\st\stm32cubeide_1.7.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\bin\ld.exe: warning: size of symbol `command_data' changed from 1 in ./Core/Src/command_parser_fsm.o to 20 in ./Core/Src/global.o
 Finished building target: VXL_5.elf
  
 arm-none-eabi-size   VXL_5.elf 
 arm-none-eabi-objdump -h -S  VXL_5.elf  > "VXL_5.list"
 arm-none-eabi-objcopy  -O ihex  VXL_5.elf  "VXL_5.hex"
    text	   data	    bss	    dec	    hex	filename
-  12696	    120	   1720	  14536	   38c8	VXL_5.elf
+  16844	    120	   1912	  18876	   49bc	VXL_5.elf
 arm-none-eabi-objcopy  -O binary  VXL_5.elf  "VXL_5.bin"
 Finished building: default.size.stdout
  
@@ -42,5 +46,5 @@ Finished building: VXL_5.bin
 Finished building: VXL_5.list
  
 
-23:06:58 Build Finished. 0 errors, 5 warnings. (took 436ms)
+03:59:30 Build Finished. 0 errors, 7 warnings. (took 486ms)
 

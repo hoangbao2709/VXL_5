@@ -1,0 +1,21 @@
+/*
+ * global.h
+ *
+ *  Created on: 28 Nov 2024
+ *      Author: PC
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "main.h"
+
+int command_flag;
+char *command_data;
+uint8_t temp;
+
+uint8_t buffer[];
+uint8_t index_buffer;
+uint8_t buffer_flag;
+
+#endif /* INC_GLOBAL_H_ */
