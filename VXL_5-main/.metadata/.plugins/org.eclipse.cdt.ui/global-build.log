@@ -1,0 +1,38 @@
+04:02:01 **** Incremental Build of configuration Debug for project VXL_5 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/command_parser_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/command_parser_fsm.d" -MT"Core/Src/command_parser_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/command_parser_fsm.o"
+arm-none-eabi-gcc "../Core/Src/uart_communiation_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart_communiation_fsm.d" -MT"Core/Src/uart_communiation_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/uart_communiation_fsm.o"
+In file included from ../Core/Inc/command_parser_fsm.h:12,
+                 from ../Core/Src/command_parser_fsm.c:1:
+../Core/Inc/global.h:14:6: warning: array 'command_data' assumed to have one element
+   14 | char command_data[];
+      |      ^~~~~~~~~~~~
+../Core/Inc/global.h:17:6: warning: array 'buffer' assumed to have one element
+   17 | char buffer[];
+      |      ^~~~~~
+In file included from ../Core/Inc/uart_communiation_fsm.h:12,
+                 from ../Core/Src/uart_communiation_fsm.c:8:
+../Core/Inc/global.h:14:6: warning: array 'command_data' assumed to have one element
+   14 | char command_data[];
+      |      ^~~~~~~~~~~~
+../Core/Inc/global.h:17:6: warning: array 'buffer' assumed to have one element
+   17 | char buffer[];
+      |      ^~~~~~
+arm-none-eabi-gcc -o "VXL_5.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\VXL_5\VXL_5\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VXL_5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+c:\st\stm32cubeide_1.7.0\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.9-2020-q2-update.win32_2.0.0.202105311346\tools\arm-none-eabi\bin\ld.exe: warning: size of symbol `command_data' changed from 1 in ./Core/Src/command_parser_fsm.o to 20 in ./Core/Src/global.o
+Finished building target: VXL_5.elf
+ 
+arm-none-eabi-size   VXL_5.elf 
+arm-none-eabi-objdump -h -S  VXL_5.elf  > "VXL_5.list"
+arm-none-eabi-objcopy  -O ihex  VXL_5.elf  "VXL_5.hex"
+arm-none-eabi-objcopy  -O binary  VXL_5.elf  "VXL_5.bin"
+   text	   data	    bss	    dec	    hex	filename
+  16820	    120	   1912	  18852	   49a4	VXL_5.elf
+Finished building: default.size.stdout
+ 
+Finished building: VXL_5.bin
+Finished building: VXL_5.hex
+ 
+ 
+Finished building: VXL_5.list
+ 

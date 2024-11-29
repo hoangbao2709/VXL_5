@@ -1,0 +1,131 @@
+11:04:02 **** Incremental Build of configuration Debug for project LAB_5 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/fsm_command_parser.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_command_parser.d" -MT"Core/Src/fsm_command_parser.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_command_parser.o"
+arm-none-eabi-gcc "../Core/Src/fsm_uart_communiation.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_uart_communiation.d" -MT"Core/Src/fsm_uart_communiation.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_uart_communiation.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/fsm_command_parser.c: In function 'check_is_ok':
+../Core/Src/fsm_command_parser.c:22:33: error: 'index_buffer' undeclared (first use in this function); did you mean 'index_buffer_tem'?
+   22 |     uint8_t index_buffer_tem = (index_buffer == 0) ? MAX_BUFFER_SIZE - 1 : index_buffer - 1;
+      |                                 ^~~~~~~~~~~~
+      |                                 index_buffer_tem
+../Core/Src/fsm_command_parser.c:22:33: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/fsm_uart_communiation.c: In function 'uart_communiation_fsm':
+../Core/Src/fsm_uart_communiation.c:26:34: error: 'hadc1' undeclared (first use in this function)
+   26 |    adc_value = HAL_ADC_GetValue(&hadc1);//read adc
+      |                                  ^~~~~
+../Core/Src/fsm_uart_communiation.c:26:34: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/fsm_uart_communiation.c:30:20: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+   30 |    uint16_t size = sprintf(adc_str, "!%d#\r\n", adc_value);
+      |                    ^~~~~~~
+../Core/Src/fsm_uart_communiation.c:30:20: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/fsm_uart_communiation.c:9:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+    8 | #include "fsm_uart_communiation.h"
+  +++ |+#include <stdio.h>
+    9 | 
+../Core/Src/fsm_uart_communiation.c:30:28: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   30 |    uint16_t size = sprintf(adc_str, "!%d#\r\n", adc_value);
+      |                            ^~~~~~~
+      |                            |
+      |                            uint8_t * {aka unsigned char *}
+../Core/Src/fsm_uart_communiation.c:30:28: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/fsm_uart_communiation.c:30:40: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   30 |    uint16_t size = sprintf(adc_str, "!%d#\r\n", adc_value);
+      |                                       ~^        ~~~~~~~~~
+      |                                        |        |
+      |                                        int      uint32_t {aka long unsigned int}
+      |                                       %ld
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:120:3: warning: implicit declaration of function 'MX_TIM2_Init'; did you mean 'MX_ADC1_Init'? [-Wimplicit-function-declaration]
+  120 |   MX_TIM2_Init();
+      |   ^~~~~~~~~~~~
+      |   MX_ADC1_Init
+../Core/Src/fsm_uart_communiation.c:31:23: error: 'huart2' undeclared (first use in this function)
+   31 |    HAL_UART_Transmit(&huart2, adc_str, size, 1000);
+      |                       ^~~~~~
+../Core/Src/fsm_command_parser.c:22:54: error: 'MAX_BUFFER_SIZE' undeclared (first use in this function); did you mean 'IS_DMA_BUFFER_SIZE'?
+   22 |     uint8_t index_buffer_tem = (index_buffer == 0) ? MAX_BUFFER_SIZE - 1 : index_buffer - 1;
+      |                                                      ^~~~~~~~~~~~~~~
+      |                                                      IS_DMA_BUFFER_SIZE
+../Core/Src/fsm_command_parser.c:25:12: error: 'buffer' undeclared (first use in this function)
+   25 |         if(buffer[index_buffer_tem] != str_ok[i])
+      |            ^~~~~~
+../Core/Src/fsm_command_parser.c:32:21: error: 'huart2' undeclared (first use in this function)
+   32 |  HAL_UART_Transmit(&huart2, data_send, sizeof(data_send) - 1, 1000);
+      |                     ^~~~~~
+../Core/Src/fsm_command_parser.c: In function 'check_is_rst':
+../Core/Src/fsm_command_parser.c:39:33: error: 'index_buffer' undeclared (first use in this function); did you mean 'index_buffer_tem'?
+   39 |     uint8_t index_buffer_tem = (index_buffer == 0) ? MAX_BUFFER_SIZE - 1 : index_buffer - 1;
+      |                                 ^~~~~~~~~~~~
+      |                                 index_buffer_tem
+../Core/Src/fsm_uart_communiation.c:34:4: warning: implicit declaration of function 'set_timeout_ok' [-Wimplicit-function-declaration]
+   34 |    set_timeout_ok(300);//3 seconds
+      |    ^~~~~~~~~~~~~~
+../Core/Src/main.c:125:3: warning: implicit declaration of function 'HAL_TIM_Base_Start_IT'; did you mean 'HAL_DMA_Start_IT'? [-Wimplicit-function-declaration]
+  125 |   HAL_TIM_Base_Start_IT(&htim2);
+      |   ^~~~~~~~~~~~~~~~~~~~~
+      |   HAL_DMA_Start_IT
+../Core/Src/main.c:125:26: error: 'htim2' undeclared (first use in this function)
+  125 |   HAL_TIM_Base_Start_IT(&htim2);
+      |                          ^~~~~
+../Core/Src/main.c:125:26: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/fsm_command_parser.c:39:54: error: 'MAX_BUFFER_SIZE' undeclared (first use in this function); did you mean 'IS_DMA_BUFFER_SIZE'?
+   39 |     uint8_t index_buffer_tem = (index_buffer == 0) ? MAX_BUFFER_SIZE - 1 : index_buffer - 1;
+      |                                                      ^~~~~~~~~~~~~~~
+      |                                                      IS_DMA_BUFFER_SIZE
+../Core/Src/fsm_uart_communiation.c:45:6: warning: implicit declaration of function 'get_timeout_ok' [-Wimplicit-function-declaration]
+   45 |   if(get_timeout_ok()){
+      |      ^~~~~~~~~~~~~~
+../Core/Src/fsm_command_parser.c:43:12: error: 'buffer' undeclared (first use in this function)
+   43 |         if(buffer[index_buffer_tem] != str_ok[i])
+      |            ^~~~~~
+../Core/Src/fsm_uart_communiation.c:49:20: warning: incompatible implicit declaration of built-in function 'sprintf'
+   49 |    uint16_t size = sprintf(adc_str, "!%d#\r\n", adc_value);
+      |                    ^~~~~~~
+../Core/Src/fsm_uart_communiation.c:49:20: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/fsm_uart_communiation.c:49:28: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   49 |    uint16_t size = sprintf(adc_str, "!%d#\r\n", adc_value);
+      |                            ^~~~~~~
+      |                            |
+      |                            uint8_t * {aka unsigned char *}
+../Core/Src/fsm_uart_communiation.c:49:28: note: expected 'char *' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Core/Src/fsm_command_parser.c:52:21: error: 'huart2' undeclared (first use in this function)
+   52 |  HAL_UART_Transmit(&huart2, data_send, sizeof(data_send) - 1, 1000);
+      |                     ^~~~~~
+../Core/Src/fsm_uart_communiation.c:49:40: warning: format '%d' expects argument of type 'int', but argument 3 has type 'uint32_t' {aka 'long unsigned int'} [-Wformat=]
+   49 |    uint16_t size = sprintf(adc_str, "!%d#\r\n", adc_value);
+      |                                       ~^        ~~~~~~~~~
+      |                                        |        |
+      |                                        int      uint32_t {aka long unsigned int}
+      |                                       %ld
+../Core/Src/main.c:132:3: warning: implicit declaration of function 'set_timer_blink_led' [-Wimplicit-function-declaration]
+  132 |   set_timer_blink_led(13);
+      |   ^~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/fsm_command_parser.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:40: Core/Src/fsm_uart_communiation.o] Error 1
+../Core/Src/main.c:140:5: warning: implicit declaration of function 'command_parser_fsm' [-Wimplicit-function-declaration]
+  140 |     command_parser_fsm();//set flag if command is valid
+      |     ^~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:145:4: warning: implicit declaration of function 'uart_communiation_fsm' [-Wimplicit-function-declaration]
+  145 |    uart_communiation_fsm();
+      |    ^~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:148:7: warning: implicit declaration of function 'get_timer_blink_led' [-Wimplicit-function-declaration]
+  148 |    if(get_timer_blink_led()){
+      |       ^~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:150:24: error: 'LED_GPIO_Port' undeclared (first use in this function); did you mean 'LED_RED_GPIO_Port'?
+  150 |     HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+      |                        ^~~~~~~~~~~~~
+      |                        LED_RED_GPIO_Port
+../Core/Src/main.c:150:39: error: 'LED_Pin' undeclared (first use in this function); did you mean 'LED_RED_Pin'?
+  150 |     HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+      |                                       ^~~~~~~
+      |                                       LED_RED_Pin
+At top level:
+../Core/Src/main.c:248:13: warning: 'MX_USART1_UART_Init' defined but not used [-Wunused-function]
+  248 | static void MX_USART1_UART_Init(void)
+      |             ^~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+
+11:04:02 Build Failed. 17 errors, 16 warnings. (took 231ms)
+
