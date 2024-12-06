@@ -64,8 +64,8 @@ all: main-build
 main-build: VXL_5.elf secondary-outputs
 
 # Tool invocations
-VXL_5.elf: $(OBJS) $(USER_OBJS) D:\VXL_5\VXL_5\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "VXL_5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\VXL_5\VXL_5\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VXL_5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+VXL_5.elf: $(OBJS) $(USER_OBJS) C:\Users\hoang\Downloads\VXL_5-main\VXL_5\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "VXL_5.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\hoang\Downloads\VXL_5-main\VXL_5\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="VXL_5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

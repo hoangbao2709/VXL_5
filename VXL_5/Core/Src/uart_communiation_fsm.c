@@ -24,19 +24,21 @@ void uart_communiation_fsm() {
             adc_value = HAL_ADC_GetValue(&hadc1);
             uint8_t adc_str[20];
             sprintf((char*)adc_str, "!%lu#\r\n", adc_value);
-            HAL_UART_Transmit(&huart2, adc_str, strlen((char*)adc_str), 1000);
-            read_adc_flag = 0;
+            read_adc_flag = 3;
             break;
-
         case 2:
-            HAL_ADC_PollForConversion(&hadc1, 1000);
-            adc_value = HAL_ADC_GetValue(&hadc1);
-            sprintf((char*)adc_str, "!%lu#\r\n", adc_value);
-            HAL_Delay(3000);
-			HAL_UART_Transmit(&huart2, adc_str, strlen((char*)adc_str), 1000);
             read_adc_flag = 0;
             break;
-
+        case 3:
+            HAL_Delay(3000);
+            int i = index_buffer - 1;
+            if (i >= 3 && buffer[i] == '#' &&
+				buffer[i - 1] == 'K' &&
+				buffer[i - 2] == 'O' &&
+				buffer[i - 3] == '!') {
+			}else
+				HAL_UART_Transmit(&huart2, adc_str, strlen((char*)adc_str), 1000);
+        	break;
         default:
             break;
     }

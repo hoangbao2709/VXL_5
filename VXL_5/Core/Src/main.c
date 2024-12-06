@@ -114,7 +114,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer(0, 30);
   while (1)
   {
 	  if (buffer_flag == 1) {
